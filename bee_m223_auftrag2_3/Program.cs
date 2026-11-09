@@ -1,4 +1,5 @@
 using bee_m223_auftrag2_3.Components;
+using bee_m223_auftrag2_3.FilmDotnet.Services;
 using Microsoft.EntityFrameworkCore;
 using bee_m223_auftrag2_3.Models;
 using bee_m223_auftrag2_3.Services;
@@ -13,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<MovieService>();
 
 var app = builder.Build();
 

@@ -29,5 +29,45 @@ namespace bee_m223_auftrag2_3.FilmDotnet.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddMovie(MovieDTO movieDto)
+        {
+            var movie = new Movie
+            {
+                Title = movieDto.Title,
+                Description = movieDto.Description,
+                Duration = movieDto.Duration
+
+            };
+
+            var newMovie = await _movieService.Add(movie);
+
+            var result =
+                new MovieDTO
+                {
+                    Id = newMovie.Id,
+                    Title = newMovie.Title,
+                    Description = newMovie.Description,
+                    Duration = newMovie.Duration
+                };
+
+            return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMovie(int id)
+        {
+            var movie = await _movieService.FindById(id);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            await _movieService.DeleteMovie(movie);
+            
+            return Ok();
+        }
+
     }
 }
