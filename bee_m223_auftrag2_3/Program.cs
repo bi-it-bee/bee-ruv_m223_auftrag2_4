@@ -2,6 +2,7 @@ using bee_m223_auftrag2_3.Components;
 using Microsoft.EntityFrameworkCore;
 using bee_m223_auftrag2_3.Models;
 using bee_m223_auftrag2_3.Services;
+using bee_m223_auftrag2_3.src.FilmDotnet.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

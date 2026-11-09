@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using bee_m223_auftrag2_3.Models;
+using bee_m223_auftrag2_3.src.FilmDotnet.Models;
 
 #nullable disable
 

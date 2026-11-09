@@ -1,4 +1,5 @@
 using bee_m223_auftrag2_3.Models;
+using bee_m223_auftrag2_3.src.FilmDotnet.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace bee_m223_auftrag2_3.Services

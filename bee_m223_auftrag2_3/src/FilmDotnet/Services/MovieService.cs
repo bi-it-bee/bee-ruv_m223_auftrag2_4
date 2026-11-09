@@ -1,4 +1,7 @@
 using System;
+using bee_m223_auftrag2_3.Models;
+using bee_m223_auftrag2_3.src.FilmDotnet.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bee_m223_auftrag2_3.src.FilmDotnet.Services
 {
@@ -11,6 +14,9 @@ namespace bee_m223_auftrag2_3.src.FilmDotnet.Services
             _databaseContext = context;
         }
 
-        
+        public async Task<List<MovieDTO>> FindAll()
+        {
+            var movies = await _databaseContext.Movies.Include(movie ) 
+        }
     }
 }
