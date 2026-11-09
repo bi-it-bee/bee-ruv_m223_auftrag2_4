@@ -69,5 +69,33 @@ namespace bee_m223_auftrag2_3.FilmDotnet.Controllers
             return Ok();
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMovie(int id, MovieDTO movieDto)
+        {
+            var movie = await _movieService.FindById(id);
+
+            if (movie == null) return NotFound();
+
+            movie.Title = movieDto.Title;
+            movie.Description = movieDto.Description;
+            movie.Duration = movieDto.Duration;
+            movie.Users = movieDto.Users;
+            movie.Maps = movieDto.Maps;
+
+            await _movieService.UpdateMovie(movie);
+
+            var result = new MovieDTO
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Description = movie.Description,
+                Duration = movie.Duration,
+                Users = movie.Users,
+                Maps = movie.Maps
+            };
+
+            return Ok(result);
+        }
+
     }
 }
