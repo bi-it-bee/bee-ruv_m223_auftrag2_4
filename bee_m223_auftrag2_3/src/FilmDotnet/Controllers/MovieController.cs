@@ -82,16 +82,16 @@ namespace bee_m223_auftrag2_3.FilmDotnet.Controllers
             movie.Users = movieDto.Users;
             movie.Maps = movieDto.Maps;
 
-            await _movieService.UpdateMovie(movie);
+            var updatedMovie = await _movieService.UpdateMovie(movie);
 
             var result = new MovieDTO
             {
-                Id = movie.Id,
-                Title = movie.Title,
-                Description = movie.Description,
-                Duration = movie.Duration,
-                Users = movie.Users,
-                Maps = movie.Maps
+                Id = updatedMovie.Id,
+                Title = updatedMovie.Title,
+                Description = updatedMovie.Description,
+                Duration = updatedMovie.Duration,
+                Users = updatedMovie.Users,
+                Maps = updatedMovie.Maps
             };
 
             return Ok(result);

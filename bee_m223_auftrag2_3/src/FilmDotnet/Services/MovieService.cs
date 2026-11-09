@@ -13,12 +13,12 @@ namespace bee_m223_auftrag2_3.FilmDotnet.Services
             _databaseContext = databaseContext;
         }
 
-        public async Task<List<MovieDTO>> FindAll()
+        public async Task<List<Movie>> FindAll()
         {
-            var movies = await _databaseContext.Movies.Include(movie => movie.Users).Include(movie => movie.Maps)
+            var movie = await _databaseContext.Movies.Include(movie => movie.Users).Include(movie => movie.Maps)
                 .ToListAsync();
     
-            var movieDtos = movies.Select(movie => new MovieDTO
+            var movies = movie.Select(movie => new Movie
                 {
                     Id = movie.Id,
                     Title = movie.Title,
@@ -28,7 +28,7 @@ namespace bee_m223_auftrag2_3.FilmDotnet.Services
                     Maps = movie.Maps
                 }
                 ).ToList();
-            return movieDtos;
+            return movies;
         }
 
         public async Task<Movie> Add(Movie movie)
